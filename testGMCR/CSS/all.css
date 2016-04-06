@@ -1,0 +1,62 @@
+﻿.center_frame	
+{ 
+	border:1px solid #4A4AFF; 
+	height:79%;		
+    text-align:center;
+}
+.titlename		
+{
+	height:5%;		
+	width:100%;		
+	font-weight:bold;
+	font-size:25px;		
+	text-align:center;	
+    
+}
+.filescrollbox	
+{
+	height:80%;			
+	width:80%;			
+	margin:0px auto;	
+	margin-bottom:2%;	
+	overflow:auto;		
+	/*background-color:lightskyblue;*/
+	font-size:18px;		
+	font-weight:bold;	
+	
+}
+.showstate
+{
+			
+	margin:0px auto;	
+	margin-bottom:2%;	
+	overflow:auto;		
+	
+	font-size:18px;		
+	font-weight:bold;	
+	
+}
+
+    .table	
+{
+   text-align:center;
+   border:1px solid;
+   border-collapse:collapse 
+}
+ .cell 
+                
+ {
+     text-align:center;
+     border:1px solid ;
+     width:50px;
+ }
+
+.lable 
+{
+    text-align:center;
+    /*background-color:gray;*/
+    font:600 20px ;
+    color:#EA1C11;
+    font-weight:600;
+    font-size:20px;
+}

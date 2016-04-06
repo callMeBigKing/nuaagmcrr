@@ -1,0 +1,188 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="stylesheet" type="text/css" href="CSS/all.css" />
+    <link rel="stylesheet" type="text/css" href="CSS/common.css" />
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/param.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <style type="text/css">
+        body {
+            background-color: #ECE6E6;
+        }
+        .menu {
+            width: 17%;
+            float: left;
+            /*border-right:3px grey solid;*/
+        }
+
+        .top {
+            height: 20%;
+            width: 100%;
+            /*border-bottom:3px grey solid;*/
+        }
+
+        .main {
+            width: 81%;
+            float: right;
+        }
+
+        .topfont {
+            font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+            float: left;
+        }
+    </style>
+
+    
+    <style>
+
+            body .box {
+                display: none;
+            }
+
+            body .render {
+                
+                margin: 0px 70px;
+            }
+
+                body .render span {
+                    font-size: 70px;
+                    font-weight: 300;
+                }
+    </style>
+
+</head>
+<script type="text/javascript">
+    x = $.request.queryString["x"];
+    y = $.request.queryString["y"];
+
+    $(".leftsidebar_box dt").css({ "background-color": "#389FC0" });
+    $(".leftsidebar_box dt img").attr("src", "../images/left/select_xl01.png");
+
+    $(function () {
+        $(".leftsidebar_box dd").hide();
+        $(".leftsidebar_box dt").click(function () {
+            $(".leftsidebar_box dt").css({ "background-color": "#389FC0" })
+            $(this).css({ "background-color": "#317eb4" });
+            $(this).parent().find('dd').removeClass("menu_chioce");
+            $(".leftsidebar_box dt img").attr("src", "../images/select_xl01.png");
+            $(this).parent().find('img').attr("src", "../images/select_xl.png");
+            $(".menu_chioce").slideUp();
+            $(this).parent().find('dd').slideToggle();
+            $(this).parent().find('dd').addClass("menu_chioce");
+        });
+        //显示被点击的下拉框
+        $(".leftsidebar_box dl").each(function (index, element) {
+            if (index == x) {
+                $(this).find("dd").show();
+                $(this).find("dt").css({ "background-color": "#389FC0" })
+            }
+            $(this).find("dd").each(function (index1, element) {
+                if (y == index1 && x == index) {
+                    $(this).css({ "background-color": "lightskyblue" });
+                }
+                //遍历href
+                $(this).find("a").attr("href", $(this).find("a").attr("href") + "?x=" + index + "&y=" + index1);
+            });
+        })
+
+    })
+
+
+</script>
+
+<body style="overflow: auto;">
+    <!-- te xiao js -->
+    <!-- ------------------------------>
+
+    <form id="form1" runat="server">
+  
+        <div id="mainframe">
+            <!-- 主框架构建，一共分为三部分 -->
+
+            <div class="topbar-wrap white">
+               
+
+                <div class="width1200 clearfix">
+                  <div class="render" style="float: left">  <h1> 冲突分析决策支持系统</h1> </div>
+                    <div class="top-info-wrap">
+                        <ul class="top-info-list clearfix">
+                            
+                            <li><a href="storeModel.aspx">保存模型</a></li>
+                            <li><a href="#">退出</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="menu">
+                <!-- 菜单(menu) -->
+                <div class="leftsidebar_box">
+                    <div class="line">
+                    </div>
+                    <dl class="custom">
+                        <dt><font size="4"><b>生成状态点</b></font>
+                            <img src="../images/select_xl01.png" /></dt>
+                        <dd class="first_dd"><a href="shuru.aspx">输入基本信息</a></dd>
+                        <dd><a href="delet1.aspx">删除排斥状态</a></dd>
+                        <dd><a href="delet2.aspx">删除关联状态</a></dd>
+                        <dd><a href="delet3.aspx">删除独立状态</a></dd>
+                        <dd><a href="delet4.aspx">声明删除状态</a></dd>
+                        <dd><a href="manualdelet.aspx">直接删除状态</a></dd>
+                        <dd><a href="coalesce.aspx">合并相同状态</a></dd>
+                        <dd><a href="Alter.aspx">设置状态编号</a></dd>
+                    </dl>
+
+                    <dl class="custom">
+                        <dt><font size="4"><b>状态转移及偏好</b></font>
+                            <img src="../images/select_xl01.png" /></dt>
+                        <dd class="first_dd"><a href="transitions.aspx">设置状态转移</a></dd>
+                        <dd><a href="Option_Prioritizing.aspx">声明输入偏好</a></dd>
+                        <dd><a href="ManualP.aspx">手动输入偏好</a></dd>
+                        <dd><a href="manualperfence.aspx">偏好矩阵输入偏好</a></dd>
+                        <dd><a href="manualAsymmetry.aspx">不对称偏好矩阵</a></dd>
+
+                    </dl>
+
+
+                    <dl class="custom">
+                        <dt><font size="4"><b>结果查看</b></font>
+                            <img src="../images/select_xl01.png" /></dt>
+                        <dd class="first_dd"><a href="showstate.aspx">查看所有状态</a></dd>
+                        <dd><a href="showtranslatemartix.aspx">状态转移矩阵</a></dd>
+                        <dd><a href="showperferencedraw.aspx">查看偏好矩阵</a></dd>
+                        <dd><a href="#">查看偏好树</a></dd>
+                        <dd><a href="transgraphaspx.aspx">状态转移图</a></dd>
+                        <dd><a href="stability.aspx">稳定性表格</a></dd>
+                        <dd><a href="showMartix.aspx">调试矩阵</a></dd>
+                    </dl>
+                </div>
+
+            </div>
+
+            <div class="main">
+                <!-- 主窗口(main) -->
+                <div class="content-wrapper main-content clear-fix">
+                    <div class="box">fuck</div>
+
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+      <script src="../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ui.master.cs" Inherits="ui" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>导航</title>
+<link  rel="stylesheet" type="text/css"  href="CSS/common.css" />
+<script type="text/javascript"  src="js/jquery-1.9.1.min.js"></script>
+
+ 
+<script type="text/javascript">
+$(".leftsidebar_box dt").css({"background-color":"#389FC0"});
+$(".leftsidebar_box dt img").attr("src","images/left/select_xl01.png");
+$(function(){
+	$(".leftsidebar_box dd").hide();
+	$(".leftsidebar_box dt").click(function(){
+		$(".leftsidebar_box dt").css({"background-color":"#389FC0"})
+		$(this).css({"background-color": "#317eb4"});
+		$(this).parent().find('dd').removeClass("menu_chioce");
+		$(".leftsidebar_box dt img").attr("src","images/select_xl01.png");
+		$(this).parent().find('img').attr("src","images/select_xl.png");
+		$(".menu_chioce").slideUp(); 
+		$(this).parent().find('dd').slideToggle();
+		$(this).parent().find('dd').addClass("menu_chioce");
+	});
+})
+</script>
+</head>
+    
+<body style="overflow:auto;">
+    <form id="form1" runat="server">
+        	
+		<div id="mainframe">		<!-- 主框架构建，一共分为三部分 -->
+   			
+   			<div class="menu">		<!-- 菜单(menu) -->
+   			       <div class="leftsidebar_box">
+		             <div class="line"></div>
+                      <dl class="custom">
+			             <dt >生成状态点<img src="images/select_xl01.png"></dt>
+			            <dd class="first_dd"><a href="~/Default2.aspx">输入基本信息</a></dd>
+			            <dd><a href="~/页面/delet1.aspx">删除排斥状态</a></dd>
+			            <dd><a href="~/页面/delet2.aspx">删除关联状态</a></dd>
+                       <dd><a href="~/页面/delet3.aspx">删除独立状态</a></dd>
+                        <dd><a href="~/页面/delet4.aspx">声明删除状态</a></dd>
+                        <dd><a href="~/页面/manualdelet.aspx">直接删除状态</a></dd>
+                        <dd><a href="~/页面/coalesce.aspx">合并相同状态</a></dd>
+                        <dd><a href="~/页面/Alter.aspx">设置状态编号</a></dd>
+		            </dl>
+
+                    <dl class="custom">
+			             <dt >状态转移及偏好<img src="images/select_xl01.png"></dt>
+			            <dd class="first_dd"><a href="~/页面/transitions.aspx">设置状态转移</a></dd>
+			            <dd><a href="~/页面/Option_Prioritizing.aspx">声明输入偏好</a></dd>
+			            <dd><a href="~/页面/manualperfence.aspx">手动输入偏好</a></dd>
+                        
+		            </dl>
+
+
+                   <dl class="custom">
+			             <dt >结果查看<img src="images/select_xl01.png"></dt>
+			            <dd class="first_dd"><a href="~/页面/showstate.aspx">查看所有状态</a></dd>
+			            <dd><a href="~/页面/showtranslatemartix.aspx">状态转移矩阵</a></dd>
+			            <dd><a href="~/页面/showperferencedraw.aspx">查看偏好矩阵</a></dd>
+                        <dd><a href="#">查看偏好树</a></dd>
+                       <dd><a href="~/页面/transgraphaspx.aspx">状态转移图</a></dd>
+                       <dd><a href="~/页面/stability.aspx">稳定性表格</a></dd>
+                        <dd><a href="~/页面/showMartix.aspx">调试矩阵</a></dd>
+		            </dl>
+   			     </div>
+   			  
+   			</div>
+        	<div class="main">		<!-- 主窗口(main) -->
+                <div  class="content-wrapper main-content clear-fix">
+   				       <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                      </asp:ContentPlaceHolder>
+                    </div>
+   			</div>
+		</div>
+	
+    </form>
+</body>
+</html>
